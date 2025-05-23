@@ -52,20 +52,28 @@ function UrlForm({ onUrlCreated }) {
       </button>
     </form>
 
-    {shortcode && (
-      <p className="mt-4 text-green-700 font-medium">
-        Shortened URL:{' '}
-        <a
-          href={`${process.env.REACT_APP_API_BASE_URL}/${shortcode}`}
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          /{shortcode}
-        </a>
-      </p>
+   {shortcode && (
+     <div className="mt-4 text-green-700 font-medium flex items-center space-x-2">
+       <span>Shortened URL:</span>
+       <a
+         href={`${process.env.REACT_APP_API_BASE_URL}/${shortcode}`}
+         target="_blank"
+         rel="noreferrer"
+         className="text-blue-600 hover:underline"
+       >
+         /{shortcode}
+       </a>
+       <button
+         onClick={() =>
+           navigator.clipboard.writeText(`${process.env.REACT_APP_API_BASE_URL}/${shortcode}`)
+         }
+         className="px-2 py-1 text-sm bg-gray-200 border rounded hover:bg-gray-300"
+       >
+         Copy
+       </button>
+     </div>
     )}
-
+    
     {error && (
       <p className="mt-4 text-red-600 font-medium" role="alert">
         {error}

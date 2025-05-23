@@ -22,7 +22,7 @@ function TopUrls() {
           className="flex justify-between items-center py-4 hover:bg-gray-50 transition"
         >
           <a
-            href={`/${url.shortcode}`}
+            href={`${process.env.REACT_APP_API_BASE_URL}/${url.shortcode}`}
             target="_blank"
             rel="noreferrer"
             className="text-blue-600 hover:underline truncate max-w-[70%]"
